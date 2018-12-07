@@ -11,7 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import "./App.css";
 
-import WrappedLink from "../utils/link-button/LinkButton";
+import WrappedLink from "../../utils/link-button/LinkButton";
 import Main from "./main/Main";
 
 class App extends Component {
