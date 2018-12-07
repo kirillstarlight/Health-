@@ -13,6 +13,7 @@ import {
   routerMiddleware,
 } from 'connected-react-router';
 import reducer from '../reducers';
+import thunk from 'redux-thunk';
 
 export const history = createBrowserHistory();
 const initialState = [];
@@ -23,6 +24,7 @@ export default createStore(
   composeWithDevTools(
     applyMiddleware(
       routerMiddleware(history),
+      thunk
     ),
   ),
 );
