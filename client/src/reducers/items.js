@@ -5,7 +5,7 @@ import {
   SET_ITEM_FAILURE,
   SET_ITEM_REQUEST,
   SET_ITEM_SUCCESS
-} from "../constants/index";
+} from "../constants/items";
 
 const initialState = {
   products: [],
