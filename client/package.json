@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodeidon -w ../server/src/app.js -d \"node ../server/src/app.js\" \"npm run start\""
   },
   "devDependencies": {
     "eslint": "^5.5.0",
