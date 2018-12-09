@@ -1,16 +1,17 @@
-import React from 'react';
-import './ProductList.css';
-import ProductCard from '../product-card/ProductCard';
+import React from "react";
+import "./ProductList.css";
+import ProductCard from "../product-card/ProductCard";
+import { Grid } from "@material-ui/core";
 
-const ProductList = (props) => (
+const ProductList = props => (
   <div className="medicine-list">
-    <ul>
-      {props.items.map((item)=>
-      <li>
-        <ProductCard item={item}/>
-      </li>
-      )}
-    </ul>
+    <Grid container item xs={12} spacing={24}>
+      {props.items.map(item => (
+        <Grid item xs={4}>
+          <ProductCard item={item} />
+        </Grid>
+      ))}
+    </Grid>
   </div>
 );
 

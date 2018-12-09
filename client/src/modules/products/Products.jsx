@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
 import { loadItems } from "../../actions/items";
 import ProductList from "./product-list/ProductList";
 import { connect } from "react-redux";
+import './Products.css';
 
 class Products extends React.Component {
   componentDidMount(){
@@ -13,9 +12,9 @@ class Products extends React.Component {
   render() {
     const { items } = this.props;
     return (
-      <React.Fragment>
+      <div className="products">
         {items && <ProductList items={items} />}
-      </React.Fragment>
+      </div>
     );
   }
 }
