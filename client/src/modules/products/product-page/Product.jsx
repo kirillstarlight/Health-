@@ -7,13 +7,17 @@ import { getItem } from "../../../actions/items";
 
 class Product extends React.Component {
   render() {
-    const { text, title, description, img } = this.props.item;
+    const {item} = this.props;
     return (
       <div>
-        <h4>{text}</h4>
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <img src={require(`../../../images/${img}`)} />
+        {item.img && 
+          <div>
+            <h4>{item.text}</h4>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+            <img src={require(`../../../images/${item.img}`)} />
+          </div>
+        }
       </div>
     );
   }
@@ -28,5 +32,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-{}
+  {}
 )(Product);

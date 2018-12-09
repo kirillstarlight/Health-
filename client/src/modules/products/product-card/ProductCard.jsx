@@ -50,11 +50,10 @@ const ProductCard = props => {
         >
           Add to cart
         </Button>
-        <WrappedLink
+        <Button onClick={() => props.getItem(_id)}><WrappedLink
           to="/item"
           linkText="Learn More"
-          onClick={() => props.getItem(_id)}
-        />
+        /></Button>
       </CardActions>
     </Card>
   );

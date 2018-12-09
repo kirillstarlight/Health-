@@ -6,11 +6,10 @@ import {
   SET_ITEMS_FAILURE,
   SET_ITEM_REQUEST,
   SET_ITEM_SUCCESS,
-  SET_ITEM_FAILURE,
+  SET_ITEM_FAILURE
 } from "../constants/items";
 
-import { URL } from '../constants/common';
-
+import { URL } from "../constants/common";
 
 export function loadItems() {
   return dispatch => {
@@ -30,18 +29,19 @@ export function loadItems() {
 }
 
 export function getItem(item_id) {
+  console.log("try to send", item_id);
   return dispatch => {
     axios
       .get(`${URL}item/${item_id}`)
-      .then( dispatch({ type: SET_ITEM_REQUEST }))
+      .then(dispatch({ type: SET_ITEM_REQUEST }))
       .then(res => {
         console.log(res);
-        let item = res.data;
+        let item = res.data.item;
         dispatch({ type: SET_ITEM_SUCCESS, payload: item });
-        })
-        .catch(err =>{ 
-            console.log(err);
-            dispatch({ type: SET_ITEM_FAILURE });
-        });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch({ type: SET_ITEM_FAILURE });
+      });
   };
 }
