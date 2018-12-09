@@ -7,6 +7,7 @@ import { toggleClose, toggleOpen } from "../../../actions/common";
 class SignInWith extends Component {
   render() {
     const responseGoogle = res => {
+      console.log(res);
       let userData = {
         name: res.w3.ig,
         provider: "google",
@@ -38,7 +39,7 @@ class SignInWith extends Component {
           /> */}
           <GoogleLogin
             className="button google"
-            clientId="602184810128-m64kjqv4ennp6bihp21qqani88sdgb8l.apps.googleusercontent.com"
+            clientId="602184810128-nu2jl3ornuu0el3scl010o4ki77ldld4.apps.googleusercontent.com"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           >

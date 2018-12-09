@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import WrappedLink from "../../../utils/link-button/LinkButton";
 
 const styles = {
   card: {
@@ -18,9 +19,9 @@ const styles = {
 };
 
 const ProductCard = props => {
-  const { description, title, text, img } = props.item;
+  const { title, text, img, _id } = props.item;
   return (
-    <Card classNamae="card">
+    <Card className="card">
       <CardActionArea>
         <CardMedia
           component="img"
@@ -41,9 +42,7 @@ const ProductCard = props => {
         <Button size="small" color="primary">
           Add to cart
         </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <WrappedLink to={`/itemview/:id${_id}`} linkText="Learn More" />
       </CardActions>
     </Card>
   );
