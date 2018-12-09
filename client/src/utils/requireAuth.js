@@ -18,7 +18,7 @@ export default function(Component) {
   };
   const mapStateToProps = state => {
     return {
-      isAuth: state.authUser.isAuth
+      isAuth: state.userReducer.isAuth
     };
   };
   return connect(mapStateToProps)(Authenticate);

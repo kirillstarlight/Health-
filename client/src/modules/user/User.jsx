@@ -8,12 +8,15 @@ class User extends Component {
   componentDidMount() {
     document.body.className = "users show";
   }
+  
   componentWillUnmount() {
     document.body.className = "";
   }
+  
   componentWillMount() {
     this.props.getUser(this.props.match.params.id);
   }
+
   render() {
     console.log("user props:");
     console.log(this.props);

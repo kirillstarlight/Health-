@@ -9,6 +9,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import { connect } from "react-redux";
 import "./App.css";
 
 import WrappedLink from "../../utils/link-button/LinkButton";
@@ -31,6 +32,7 @@ class App extends Component {
 
   render() {
     const { open } = this.state;
+    const {id} = this.props.user;
     return (
       <React.Fragment>
         <AppBar position="static" className="appBar">
@@ -66,7 +68,7 @@ class App extends Component {
           <Divider />
           <List>
             <ListItem>
-              <WrappedLink to="/user-cart" linkText="User" />
+              <WrappedLink to={`/user/${id}`} linkText="User" />
             </ListItem>
           </List>
           <Divider />
@@ -77,4 +79,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

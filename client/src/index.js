@@ -12,13 +12,15 @@ import {getUser} from './actions/user';
 
 if (localStorage.Auth) {
   // update localstorage
+  console.log(localStorage);
   store.dispatch({
     type: SET_USER_SUCCESS,
-    user: JSON.parse(localStorage.Auth)
+    payload: JSON.parse(localStorage.Auth)
   });
   var _id = JSON.parse(localStorage.Auth)._id;
   getUser(_id).then(res => {
-    store.dispatch({ type: SET_USER_SUCCESS, user: res });
+    console.log(res);
+    store.dispatch({ type: SET_USER_SUCCESS, payload: res });
   });
 }
 

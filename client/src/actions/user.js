@@ -12,6 +12,7 @@ export function getUser(_id) {
   return axios
     .get(`${URL}user/${_id}`)
     .then(res => {
+      console.log(res);
       return res.data;
     })
     .catch(err => console.log(err));
