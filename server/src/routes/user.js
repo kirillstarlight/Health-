@@ -5,6 +5,6 @@ const multipartWare = multipart();
 module.exports = router => {
   router.route("/user/:id").get(usercontroller.getUser);
   router.route("/user").post(usercontroller.addUser);
-  router.route("/item/:id/getItem").get(usercontroller.addItemToBasket);
-  router.route("/user/:id/buy").get(usercontroller.buyItems);
+  router.route("/item/getItem").get(usercontroller.addItemToBasket);
+  router.route("/user/buy").post(usercontroller.buyItems);
 };

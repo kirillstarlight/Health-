@@ -14,7 +14,7 @@ class User extends Component {
   }
   
   componentWillMount() {
-    this.props.getUser(this.props.match.params.id);
+    this.props.getUser(this.props.match.params._id);
   }
 
   render() {
@@ -22,17 +22,10 @@ class User extends Component {
     console.log(this.props);
     return (
       <div>
-        {Object.keys(this.props.profile).length > 0 ? (
-          <UserList items={this.props} />
-        ) : (
-          ""
-        )}
+        {this.props.user._id}
       </div>
     );
   }
-}
-function UserList({ items }) {
-  return <h1>User</h1>;
 }
 
 User.propTypes = {
@@ -41,10 +34,10 @@ User.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.user,
-    profile: state.user.profile
+    user: state.userReducer.user,
   };
 };
+
 export default connect(
   mapStateToProps,
   {

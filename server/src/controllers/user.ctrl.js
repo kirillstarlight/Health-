@@ -30,6 +30,7 @@ module.exports = {
       })
       .catch(next);
   },
+  
   buyItems: (req, res, next) => {
     User.findById(req.body.user_id)
       .then(user => {

@@ -13,13 +13,16 @@ export default function(Component) {
       return <Component {...this.props} />;
     }
   }
+
   Authenticate.contextTypes = {
     router: PropTypes.object.isRequired
   };
+
   const mapStateToProps = state => {
     return {
       isAuth: state.userReducer.isAuth
     };
   };
+  
   return connect(mapStateToProps)(Authenticate);
 }
