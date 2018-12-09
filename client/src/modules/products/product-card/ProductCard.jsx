@@ -8,8 +8,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import WrappedLink from "../../../utils/link-button/LinkButton";
-import {connect} from 'react-redux';
-import { AddItemToCart } from '../../../actions/user';
+import { connect } from "react-redux";
+import { AddItemToCart } from "../../../actions/user";
+import { getItem } from "../../../actions/items";
 
 const styles = {
   card: {
@@ -22,6 +23,8 @@ const styles = {
 
 const ProductCard = props => {
   const { title, text, img, _id } = props.item;
+  console.log(_id);
+  console.log(props.user._id);
   return (
     <Card className="card">
       <CardActionArea>
@@ -29,7 +32,6 @@ const ProductCard = props => {
           component="img"
           alt={title}
           className="media"
-          height="180"
           image={require(`../../../images/${img}`)}
           title={title}
         />
@@ -41,17 +43,30 @@ const ProductCard = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={()=>props.addToCart(props.user._id,_id)}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => props.addToCart(props.user._id, _id)}
+        >
           Add to cart
         </Button>
-        <WrappedLink to={`/itemview/:id${_id}`} linkText="Learn More" />
+        <WrappedLink
+          to="/item"
+          linkText="Learn More"
+          onClick={() => props.getItem(_id)}
+        />
       </CardActions>
     </Card>
   );
 };
 
-const mapStateToProps=state=>({
+const mapStateToProps = state => ({
   user: state.userReducer.user
-})
+});
 
-export default withStyles(styles)(connect(mapStateToProps,{addToCart: AddItemToCart})(ProductCard));
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    { addToCart: AddItemToCart, getItem: getItem }
+  )(ProductCard)
+);

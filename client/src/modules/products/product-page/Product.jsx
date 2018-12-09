@@ -6,18 +6,6 @@ import "./Product.css";
 import { getItem } from "../../../actions/items";
 
 class Product extends React.Component {
-  componentDidMount() {
-    document.body.className = "items show";
-  }
-
-  componentWillMount() {
-    this.props.getItem(this.props.match.params._id);
-  }
-
-  componentWillUnmount() {
-    document.body.className = "";
-  }
-
   render() {
     const { text, title, description, img } = this.props.item;
     return (
@@ -31,10 +19,6 @@ class Product extends React.Component {
   }
 }
 
-Product.propTypes = {
-  params: PropTypes.object.isRequired
-};
-
 const mapStateToProps = state => {
   return {
     item: state.itemsReducer.product,
@@ -44,7 +28,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {
-    getItem
-  }
+{}
 )(Product);

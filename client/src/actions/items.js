@@ -32,7 +32,7 @@ export function loadItems() {
 export function getItem(item_id) {
   return dispatch => {
     axios
-      .get(`${URL}item/`,item_id)
+      .get(`${URL}item/${item_id}`)
       .then( dispatch({ type: SET_ITEM_REQUEST }))
       .then(res => {
         console.log(res);

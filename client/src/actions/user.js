@@ -39,7 +39,7 @@ export function AddItemToCart(item_id, user_id) {
   console.log(`${user_id} buy ${item_id}`);
   return dispatch => {
     axios
-      .get(`${URL}item/getItem`, { item_id, user_id })
+      .post(`${URL}item/getItem`, { item_id: item_id, user_id: user_id })
       .then(res => {
         dispatch({ type: ADD_ITEM, user_id });
       })

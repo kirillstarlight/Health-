@@ -4,5 +4,5 @@ const multipartWare = multipart();
 
 module.exports = router => {
   router.route("/items").get(itemcontroller.getAll);
-  router.route("/itemview/:id").get(itemcontroller.getItem);
+  router.route("/item/:id").get(itemcontroller.getItem);
 };
