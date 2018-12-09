@@ -13,6 +13,7 @@ import "./App.css";
 
 import WrappedLink from "../../utils/link-button/LinkButton";
 import Main from "./main/Main";
+import SignInWith from "../user/sign-in-with/SignInWith";
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
             <Typography variant="h3" color="default" className="grow">
               Health++
             </Typography>
+            <SignInWith />
           </Toolbar>
         </AppBar>
         <AppBar position="static" className="appBarSecond">

@@ -18,6 +18,7 @@ export function loadItems() {
       .get(`${URL}items`)
       .then(dispatch({ type: SET_ITEMS_REQUEST }))
       .then(res => {
+        console.log(res);
         let items = res.data;
         dispatch({ type: SET_ITEMS_SUCCESS, payload: items });
       })
@@ -34,6 +35,7 @@ export function getItem(item_id) {
       .get(`${URL}item/${item_id}`)
       .then( dispatch({ type: SET_ITEM_REQUEST }))
       .then(res => {
+        console.log(res);
         let item = res.data;
         dispatch({ type: SET_ITEM_SUCCESS, payload: item });
         })

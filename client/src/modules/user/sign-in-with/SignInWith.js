@@ -7,7 +7,7 @@ import { toggleClose, toggleOpen } from "../../../actions/common";
 class SignInWith extends Component {
   render() {
     const responseGoogle = res => {
-      let postData = {
+      let userData = {
         name: res.w3.ig,
         provider: "google",
         email: res.w3.U3,
@@ -15,9 +15,9 @@ class SignInWith extends Component {
         token: res.Zi.access_token,
         provider_pic: res.w3.Paa
       };
-      console.log(postData);
+      console.log(userData);
       // build our user data
-      this.props.SignInUser(postData);
+      this.props.SignInUser(userData);
       this.props.toggleClose();
     };
     return (
@@ -30,30 +30,21 @@ class SignInWith extends Component {
               : "overlay overlay-hugeinc"
           }
         >
-          <button
+          {/* <button
             onClick={this.props.toggleClose}
             data-behavior="close-overlay"
             type="button"
             className="overlay-close"
+          /> */}
+          <GoogleLogin
+            className="button google"
+            clientId="602184810128-m64kjqv4ennp6bihp21qqani88sdgb8l.apps.googleusercontent.com"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
           >
-            <span className="glyphicon glyphicon-remove" />
-          </button>
-          <nav>
-            <h2 className="grayed-heading center">Sign In</h2>
-            <ul className="omniauth-button-group">
-              <li className="omniauth-button google">
-                <GoogleLogin
-                  className="button google"
-                  clientId="YOUR_CLIENT_ID_HERE.apps.googleusercontent.com"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                >
-                  <i className="fa fa-google" />
-                  <span> SignIn with Google</span>
-                </GoogleLogin>
-              </li>
-            </ul>
-          </nav>
+            <i className="fa fa-google" />
+            <span> SignIn with Google</span>
+          </GoogleLogin>
         </div>
       </div>
     );

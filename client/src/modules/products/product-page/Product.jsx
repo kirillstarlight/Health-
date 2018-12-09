@@ -9,12 +9,15 @@ class Product extends React.Component {
   componentDidMount() {
     document.body.className = "items show";
   }
+
   componentWillMount() {
     this.props.getItem(this.props.match.params.id);
   }
+
   componentWillUnmount() {
     document.body.className = "";
   }
+  
   render() {
     const { text, title, description, img } = this.props.item;
     return (
