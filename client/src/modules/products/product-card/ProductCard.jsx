@@ -46,7 +46,7 @@ const ProductCard = props => {
         <Button
           size="small"
           color="primary"
-          onClick={() => props.addToCart(props.user._id, _id)}
+          onClick={() => props.addToCart(_id, props.user._id)}
         >
           Add to cart
         </Button>

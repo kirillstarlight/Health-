@@ -3,7 +3,8 @@ import axios from "axios";
 import {
   SET_USER_SUCCESS,
   SET_USER_REQUEST,
-  SET_USER_FAILURE
+  SET_USER_FAILURE,
+  SET_PROFILE_SUCCESS
 } from "../constants/user";
 import { ADD_ITEM } from "../constants/user";
 import { URL } from "../constants/common";
@@ -16,6 +17,15 @@ export function getUser(_id) {
       return res.data;
     })
     .catch(err => console.log(err));
+}
+
+export function getUserProfile (_id) {
+  return (dispatch) => {
+      axios.get(`${URL}user/profile/${_id}`).then((res)=>{
+          let profile = res.data
+          dispatch({type: SET_PROFILE_SUCCESS, payload: profile})
+      }).catch(err=>console.log(err))
+  }
 }
 
 export function SignInUser(user_data) {

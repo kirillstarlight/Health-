@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getUser } from "../../actions/user";
+import { getUser, getUserProfile } from "../../actions/user";
 import "./User.css";
 
 class User extends Component {
   componentDidMount() {
     document.body.className = "users show";
+    this.props.getUserProfile(this.props.user._id);
   }
   
   componentWillUnmount() {
     document.body.className = "";
-  }
-  
-  componentWillMount() {
-    this.props.getUser(this.props.match.params._id);
   }
 
   render() {
@@ -22,25 +19,23 @@ class User extends Component {
     console.log(this.props);
     return (
       <div>
-        {this.props.user._id}
+        {console.log(this.props.user.cart)}
       </div>
     );
   }
 }
 
-User.propTypes = {
-  params: PropTypes.object.isRequired
-};
-
 const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
+    isAuth: state.userReducer.isAuth
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    getUser
+    getUser: getUser,
+    getUserProfile: getUserProfile
   }
 )(User);

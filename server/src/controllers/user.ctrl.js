@@ -1,4 +1,5 @@
 const User = require("./../models/User");
+const Item = require("./../models/Item");
 
 module.exports = {
   addUser: (req, res, next) => {
@@ -25,8 +26,11 @@ module.exports = {
 
   addItemToBasket: (req, res, next) => {
     console.log("addItemToBasket on server");
+    console.log(req.body.user_id, req.body.item_id)
     User.findById(req.body.user_id)
-      .then((err, user) => {
+      .then(user => {
+        console.log("user:");
+        console.log(user);
         return user.cart.push(Item.findById(req.body.item_id)).then(() => {
           return res.json({ msg: "added" });
         });

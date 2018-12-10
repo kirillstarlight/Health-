@@ -14,7 +14,7 @@ class Main extends React.Component {
       <React.Fragment>
         <Switch>
           <Route exact path="/products" component={Products} />
-          <Route path="/user" component={requireAuthentication(User)} />
+          <Route path="/user" component={User} />
           <Route path="/item" component={Product} />
         </Switch>
       </React.Fragment>

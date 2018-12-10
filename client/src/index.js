@@ -8,7 +8,7 @@ import { Switch, Route } from "react-router-dom";
 import App from "./modules/app/App";
 import store, { history } from "./store";
 import { SET_USER_SUCCESS } from "./constants/user";
-import {getUser} from './actions/user';
+import { getUser } from "./actions/user";
 
 if (localStorage.Auth) {
   // update localstorage

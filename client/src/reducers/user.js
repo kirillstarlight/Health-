@@ -3,7 +3,7 @@ import {
   SET_USER_REQUEST,
   SET_USER_FAILURE,
   SET_PROFILE_REQUEST,
-  SET_PROFILE_SUCESS,
+  SET_PROFILE_SUCCESS,
   SET_PROFILE_FAILURE
 } from "../constants/user";
 
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         user: action.payload,
         isLoading: false
       };
-    case SET_PROFILE_SUCESS:
+    case SET_PROFILE_SUCCESS:
       return {
         ...state,
         profile: action.payload,
