@@ -5,16 +5,20 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Drawer from "@material-ui/core/Drawer";
 import MenuIcon from "@material-ui/icons/Menu";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import "./App.css";
+import { Route, Redirect } from "react-router";
 
 import WrappedLink from "../../utils/link-button/LinkButton";
 import Main from "./main/Main";
 import SignInWith from "../user/sign-in-with/SignInWith";
+import { Link } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -30,9 +34,14 @@ class App extends Component {
     this.setState({ open: false });
   };
 
+  handleUserOpen = () => {
+    return <Redirect to="user" push />;
+  };
+
   render() {
     const { open } = this.state;
-    const {id} = this.props.user;
+    const { id } = this.props.user;
+    const { isAuth } = this.props;
     return (
       <React.Fragment>
         <AppBar position="static" className="appBar">
@@ -40,7 +49,20 @@ class App extends Component {
             <Typography variant="h3" color="default" className="grow">
               Health++
             </Typography>
-            <SignInWith />
+            {isAuth ? (
+              <Link to="/user">
+                <IconButton
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={this.handleUserOpen}
+                  className="menuButton"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </Link>
+            ) : (
+              <SignInWith />
+            )}
           </Toolbar>
         </AppBar>
         <AppBar position="static" className="appBarSecond">
@@ -62,13 +84,13 @@ class App extends Component {
           <Divider />
           <List>
             <ListItem button>
-              <WrappedLink to="/products" linkText="Products" />
+              <WrappedLink to="/products" linkText="Medecines" />
             </ListItem>
           </List>
           <Divider />
           <List>
-            <ListItem>
-              <WrappedLink to={`/user/${id}`} linkText="User" />
+            <ListItem button>
+              <WrappedLink to="#" linkText="Equipment" />
             </ListItem>
           </List>
           <Divider />
@@ -81,7 +103,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    isAuth: state.userReducer.isAuth
   };
 };
 
