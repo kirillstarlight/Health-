@@ -4,12 +4,7 @@ let UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   token: String,
-  cart: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Item"
-    }
-  ]
+  cart: []
 });
 
 UserSchema.methods.buy = function() {

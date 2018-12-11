@@ -7,5 +7,5 @@ module.exports = router => {
   router.route("/user/profile/:id").get(usercontroller.getUser);
   router.route("/user").post(usercontroller.addUser);
   router.route("/item/getItem").post(usercontroller.addItemToBasket);
-  router.route("/user/buy").post(usercontroller.buyItems);
+  router.route("/cart/buyAll").post(usercontroller.buyItems);
 };

@@ -14,8 +14,7 @@ module.exports = {
 
   getUser: (req, res, next) => {
     console.log("getUser on server");
-    User.findById(req.params.id).then(
-      /*populate('following').exec*/ (err, user) => {
+    User.findById(req.params.id).then((err, user) => {
         if (err) res.send(err);
         else if (!user) res.send(404);
         else res.send(user);
@@ -31,9 +30,10 @@ module.exports = {
       .then(user => {
         console.log("user:");
         console.log(user);
-        return user.cart.push(Item.findById(req.body.item_id)).then(() => {
+        user.cart.push(req.body.item_id);
+        
           return res.json({ msg: "added" });
-        });
+        
       })
       .catch(next);
   },
@@ -41,7 +41,7 @@ module.exports = {
   buyItems: (req, res, next) => {
     User.findById(req.body.user_id)
       .then(user => {
-        user.basket = [];
+        user.cart = [];
         return res.json({ msg: "basket empty" });
       })
       .catch(next);
