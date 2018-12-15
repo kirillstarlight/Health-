@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getUser, getUserProfile, BuyAll } from "../../actions/user";
+import { getUser, getUserProfile, BuyAll, logout } from "../../actions/user";
 import "./User.css";
 import Button from "@material-ui/core/Button";
 
@@ -24,6 +24,7 @@ class User extends Component {
         {user.cart.map(item => (
           <h4>{item.title}</h4>
         ))}
+        <Button onClick={() => this.props.logout()}>Logout</Button>
         <Button onClick={() => this.props.buyAll(user._id)}>Buy All</Button>
       </div>
     );
@@ -42,6 +43,7 @@ export default connect(
   {
     getUser: getUser,
     getUserProfile: getUserProfile,
-    buyAll: BuyAll
+    buyAll: BuyAll,
+    logout: logout
   }
 )(User);

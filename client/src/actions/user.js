@@ -6,7 +6,8 @@ import {
   SET_USER_FAILURE,
   SET_PROFILE_SUCCESS,
   ADD_ITEM,
-  BUY_ALL
+  BUY_ALL,
+  DELETE_USER
 } from "../constants/user";
 import { URL } from "../constants/common";
 
@@ -47,6 +48,13 @@ export function SignInUser(user_data) {
       })
       .catch(err => console.log(err));
   };
+}
+export function logout(){
+  return dispatch=>{
+    localStorage.clear();
+    console.log("logout");
+    dispatch({type: DELETE_USER})
+  }
 }
 
 export function AddItemToCart(item_id, user_id) {

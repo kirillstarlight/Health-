@@ -4,7 +4,8 @@ import {
   SET_USER_FAILURE,
   SET_PROFILE_REQUEST,
   SET_PROFILE_SUCCESS,
-  SET_PROFILE_FAILURE
+  SET_PROFILE_FAILURE,
+  DELETE_USER
 } from "../constants/user";
 
 const initialState = {
@@ -36,6 +37,13 @@ export default (state = initialState, action) => {
         ...state,
         profile: action.payload,
         isLoading: false
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        profile: {},
+        user: {},
+        isAuth: false
       };
     default:
       return state;
